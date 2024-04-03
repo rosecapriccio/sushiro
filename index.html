@@ -5,41 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>rosecap</title>
+    <title>rosecap2</title>
 
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
+
+    <script>
+        // var i = -1;
+        // var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png"];
+        // AFRAME.registerComponent('camera-listener', {
+        //   init: function () {
+        //     this.el.addEventListener('click', function (evt) {
+        //       i = (i + 1) % COLORS.length;
+        //       this.setAttribute('material', 'src', COLORS[i]);
+        //     });
+        //   }
+        // });
+        AFRAME.registerComponent("my-image-comp", {
+            init: function () {
+            this.a_image = document.querySelector("a-image");
+            setTimeout(() => {
+                this.a_image.setAttribute("src", "img/icon2.png");
+                this.a_image.components.material.flushToDOM(true);
+            }, 5000);
+          },
+        });
+    </script>
+
     <a-scene embedded arjs="debugUIEnabled:false;">
         <a-entity camera></a-entity>
-
-        <!-- Markerを表示した際の処理を以下に記述する -->
-        <!-- ARマーカーのファイル名をここで指定する -->
         <a-marker type="pattern" url="img/pattern_simple_qrcode.patt">
-
-            <!-- 表示したい画像を src= ～ で指定する -->
-            <!-- 画像の大きさは width と height で設定可能 -->
-            <!-- 画像を表示させる位置は position で設定可能 -->
-            <!-- 画像を水平に表示させる場合は下記の rotation でOK -->
-            <a-image camera-listener width="2.6" height="2" position="0.2 0.4 0.4" rotation="-90 0 0" src="img/icon.png">
+            <a-image my-image-comp width="2.6" height="2" position="0.2 0.4 0.4" rotation="-90 0 0" src="img/icon.png">
             </a-image>
-
         </a-marker>
     </a-scene>
+
+<!-- 
     <script>
         var i = -1;
-        var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png"];
+        var COLORS = ['red', 'green', 'blue'];
         AFRAME.registerComponent('camera-listener', {
           init: function () {
             this.el.addEventListener('click', function (evt) {
               i = (i + 1) % COLORS.length;
-              this.setAttribute('material', 'src', COLORS[i]);
+              this.setAttribute('material', 'color', COLORS[i]);
             });
           }
         });
-    </script>
+    </script> -->
+<!-- 
+  <a-scene background="color: #AAAAAA">
+    <a-camera>
+        <a-cursor></a-cursor>
+    </a-camera>
+    <a-image position="-1 0.5 -3" width="2.6" height="2" rotation="1200 0 0" src="img/icon.png"></a-image> -->
+    <!-- <a-box camera-listener position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box> -->
+    <!-- <a-sphere camera-listener position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+    <a-cylinder camera-listener position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane> -->
+  <!-- </a-scene> -->
 </body>
 
 </html>
