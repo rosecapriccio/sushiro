@@ -23,11 +23,23 @@
             <!-- 画像の大きさは width と height で設定可能 -->
             <!-- 画像を表示させる位置は position で設定可能 -->
             <!-- 画像を水平に表示させる場合は下記の rotation でOK -->
-            <a-image width="2.6" height="2" position="0.2 0.4 0.4" rotation="-90 0 0" src="img/icon.png">
+            <a-image camera-listener width="2.6" height="2" position="0.2 0.4 0.4" rotation="-90 0 0" src="img/icon.png">
             </a-image>
 
         </a-marker>
     </a-scene>
+    <script>
+        var i = -1;
+        var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png"];
+        AFRAME.registerComponent('camera-listener', {
+          init: function () {
+            this.el.addEventListener('click', function (evt) {
+              i = (i + 1) % COLORS.length;
+              this.setAttribute('material', 'src', COLORS[i]);
+            });
+          }
+        });
+    </script>
 </body>
 
 </html>
