@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>rosecap</title>
+    <title>rosecap2</title>
 
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
@@ -18,7 +18,7 @@
         var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
         AFRAME.registerComponent('camera-listener', {
           init: function () {
-            this.el.addEventListener('click', function (evt) {
+            this.el.addEventListener('mouseup', function (evt) {
               i = (i + 1) % COLORS.length;
               this.setAttribute('material', 'src', COLORS[i]);
             });
