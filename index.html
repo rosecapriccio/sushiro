@@ -12,7 +12,6 @@
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
-
     <script>
         var i = -1;
         var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
@@ -24,81 +23,32 @@
             });
           }
         });
-        // AFRAME.registerComponent("my-image-comp", {
-        //     init: function () {
-        //     this.a_image = document.querySelector("a-image");
-        //     setTimeout(() => {
-        //         this.a_image.setAttribute("src", "img/icon2.png");
-        //         this.a_image.components.material.flushToDOM(true);
-        //     }, 5000);
-        //   },
-        // });
+
         AFRAME.registerComponent('registerevents', {
-        init: function () {
-            var marker = this.el;
+            init: function () {
+                var marker = this.el;
 
-            // マーカーを検出したイベントの登録
-            marker.addEventListener('markerFound', function () {
-                document.getElementById('comic').setAttribute('animation__scale', 'enabled: true');
-            });
+                marker.addEventListener('markerFound', function () {
+                    document.getElementById('comic').setAttribute('animation__scale', 'enabled: true');
+                });
 
-            marker.addEventListener('markerLost', function () {
-                document.getElementById('comic').setAttribute('animation__scale', 'enabled: false');
-            });
-
-            // マーカーを見失ったイベントの登録
-            // marker.addEventListener('markerLost', function () {
-            //     var markerId = marker.id;
-            //     console.log('markerLost', markerId);
-
-            //     アニメーションの停止
-            //     document.querySelector('#comic').emit('markerlost');
-            // });
-        }
-    });
+                // marker.addEventListener('markerLost', function () {
+                //     document.getElementById('comic').setAttribute('animation__scale', 'enabled: false');
+                // });
+            }
+        });
     </script>
 
     <a-scene embedded arjs="debugUIEnabled:false; patternRatio:0.85">
         <a-entity camera></a-entity>
-        <!-- <a-camera>
-            <a-cursor></a-cursor>
-        </a-camera> -->
         <a-entity cursor="rayOrigin: mouse"></a-entity>
         <a-marker type="pattern" url="img/pattern_simple_qrcode.patt" registerevents>
             <a-entity id="comic" animation__scale="property: scale; dur: 1000; from: 0 0 0; to: 1 1 1; easing: easeOutCubic; enabled: false;"> 
-            <a-image camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="img/icon.png">
-                <!-- <a-animation attribute="scale" from="0 0 0" to="1 1 1" dur="5000" repeat="indefinite" begin="markerfound" end="markerlost">
-                </a-animation> -->
-                <!-- <a-animation attribute="rotation" to="0 360 0" dur="4000" repeat="indefinite" easing="linear"></a-animation> -->
-            </a-image>
+                <a-image camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="img/icon.png">
+                </a-image>
             </a-entity>
         </a-marker>
     </a-scene>
-
-<!-- 
-    <script>
-        var i = -1;
-        var COLORS = ['red', 'green', 'blue'];
-        AFRAME.registerComponent('camera-listener', {
-          init: function () {
-            this.el.addEventListener('click', function (evt) {
-              i = (i + 1) % COLORS.length;
-              this.setAttribute('material', 'color', COLORS[i]);
-            });
-          }
-        });
-    </script> -->
-<!-- 
-  <a-scene background="color: #AAAAAA">
-    <a-camera>
-        <a-cursor></a-cursor>
-    </a-camera>
-    <a-image position="-1 0.5 -3" width="2.6" height="2" rotation="1200 0 0" src="img/icon.png"></a-image> -->
-    <!-- <a-box camera-listener position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box> -->
-    <!-- <a-sphere camera-listener position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
-    <a-cylinder camera-listener position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
-    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane> -->
-  <!-- </a-scene> -->
 </body>
 
 </html>
