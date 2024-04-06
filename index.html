@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>rosecap</title>
+    <title>rosecap1</title>
 
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
@@ -43,17 +43,18 @@
                 console.log('markerFound', markerId);
 
                 // アニメーションの開始
-                document.querySelector('#comic').emit('markerfound');
+                // document.querySelector('#comic').emit('markerfound');
+                document.getElementById('comic').setAttribute('animation__scale', 'enabled: true');
             });
 
             // マーカーを見失ったイベントの登録
-            marker.addEventListener('markerLost', function () {
-                var markerId = marker.id;
-                console.log('markerLost', markerId);
+            // marker.addEventListener('markerLost', function () {
+            //     var markerId = marker.id;
+            //     console.log('markerLost', markerId);
 
-                // アニメーションの停止
-                document.querySelector('#comic').emit('markerlost');
-            });
+            //     アニメーションの停止
+            //     document.querySelector('#comic').emit('markerlost');
+            // });
         }
     });
     </script>
@@ -65,8 +66,8 @@
         </a-camera> -->
         <a-entity cursor="rayOrigin: mouse"></a-entity>
         <a-marker type="pattern" url="img/pattern_simple_qrcode.patt" registerevents>
-            <a-entity animation="property: rotation; to: 0 0 720; loop: true; dur: 5000; delay: 2000"> 
-            <a-image id="comic" camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="img/icon.png">
+            <a-entity id="comic" animation__scale="property: scale; dur: 3000; from: 0 0 0; to: 1 1 1; easing: linear; enabled: false;"> 
+            <a-image camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="img/icon.png">
                 <!-- <a-animation attribute="scale" from="0 0 0" to="1 1 1" dur="5000" repeat="indefinite" begin="markerfound" end="markerlost">
                 </a-animation> -->
                 <!-- <a-animation attribute="rotation" to="0 360 0" dur="4000" repeat="indefinite" easing="linear"></a-animation> -->
