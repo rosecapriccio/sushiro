@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>rosecap</title>
+    <title>rosecap1</title>
 
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
@@ -33,6 +33,29 @@
         //     }, 5000);
         //   },
         // });
+        AFRAME.registerComponent('registerevents', {
+        init: function () {
+            var marker = this.el;
+
+            // マーカーを検出したイベントの登録
+            marker.addEventListener('markerFound', function () {
+                var markerId = marker.id;
+                console.log('markerFound', markerId);
+
+                // アニメーションの開始
+                document.querySelector('#comic').emit('markerfound');
+            });
+
+            // マーカーを見失ったイベントの登録
+            marker.addEventListener('markerLost', function () {
+                var markerId = marker.id;
+                console.log('markerLost', markerId);
+
+                // アニメーションの停止
+                document.querySelector('#comic').emit('markerlost');
+            });
+        }
+    });
     </script>
 
     <a-scene embedded arjs="debugUIEnabled:false; patternRatio:0.85">
@@ -41,9 +64,9 @@
             <a-cursor></a-cursor>
         </a-camera> -->
         <a-entity cursor="rayOrigin: mouse"></a-entity>
-        <a-marker type="pattern" url="img/pattern_simple_qrcode.patt">
-            <a-image camera-listener width="3.9" height="3" position="0 0.5 0" rotation="-45 0 0" src="img/icon.png">
-                <a-animation attribute="scale" from="0 0 0" to="1 1 1" dur="500">
+        <a-marker type="pattern" url="img/pattern_simple_qrcode.patt" registerevents>
+            <a-image  id="comic" camera-listener width="3.9" height="3" position="0 0.5 0" rotation="-90 0 0" src="img/icon.png">
+                <a-animation attribute="scale" from="0 0 0" to="1 1 1" dur="500" begin="markerfound" end="markerlost">
                 </a-animation>
             </a-image>
         </a-marker>
