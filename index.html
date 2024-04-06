@@ -65,8 +65,8 @@
         </a-camera> -->
         <a-entity cursor="rayOrigin: mouse"></a-entity>
         <a-marker type="pattern" url="img/pattern_simple_qrcode.patt" registerevents>
-            <a-image  id="comic" camera-listener width="3.9" height="3" position="0 0.5 0" rotation="-90 0 0" src="img/icon.png">
-                <a-animation attribute="scale" from="0 0 0" to="1 1 1" dur="500" begin="markerfound" end="markerlost">
+            <a-image  id="comic" camera-listener width="3.9" height="3" position="0 0.5 0" rotation="0 0 0" src="img/icon.png">
+                <a-animation attribute="scale" from="0 0 0" to="1 1 1" dur="5000" repeat="indefinite" begin="markerfound" end="markerlost">
                 </a-animation>
             </a-image>
         </a-marker>
