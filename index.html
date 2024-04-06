@@ -39,12 +39,11 @@
 
             // マーカーを検出したイベントの登録
             marker.addEventListener('markerFound', function () {
-                var markerId = marker.id;
-                console.log('markerFound', markerId);
-
-                // アニメーションの開始
-                // document.querySelector('#comic').emit('markerfound');
                 document.getElementById('comic').setAttribute('animation__scale', 'enabled: true');
+            });
+
+            marker.addEventListener('markerLost', function () {
+                document.getElementById('comic').setAttribute('animation__scale', 'enabled: false');
             });
 
             // マーカーを見失ったイベントの登録
