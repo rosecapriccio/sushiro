@@ -13,7 +13,7 @@
 
 <body style="margin : 0px; overflow: hidden;">
     <script>
-        var i = -1;
+        var i = 0;
         var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
         AFRAME.registerComponent('camera-listener', {
           init: function () {
@@ -48,7 +48,7 @@
             <a-entity 
                 id="comic" 
                 animation__scale="property: scale; dur: 1000; from: 0 0 0; to: 1 1 1; easing: easeOutCubic; enabled: false;"
-                animation__rotation="property: rotation; dur: 1000; from: -90 0 0; to: -90 360 0; easing: easeOutCubic; startEvents: objclick;"
+                animation__rotation="property: rotation; dur: 1000; from: 0 0 0; to: 0 360 0; easing: easeOutCubic; startEvents: objclick;"
             > 
                 <a-image camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="img/icon.png">
                 </a-image>
