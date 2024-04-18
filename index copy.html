@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>rosecap</title>
+    <title>rosecap2</title>
 
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
@@ -14,12 +14,17 @@
 <body style="margin : 0px; overflow: hidden;">
     <script>
         var i = 0;
-        //var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
-        var COLORS = ["img/acon1.png", "img/acon2.png", "img/acon3.png", "img/acon4.png"];
+        var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
+        // var COLORS = [
+        //     ["img/icon1.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"],
+        //     ["img/acon1.png", "img/acon2.png", "img/acon3.png", "img/acon4.png"]
+        // ];
+
         AFRAME.registerComponent('camera-listener', {
           init: function () {
+            this.setAttribute('material', 'src', COLORS[0]);
             this.el.addEventListener('mouseup', function (evt) {
-              i = (i + 1) % COLORS.length;
+              i = (i + 1) % 4;
               this.setAttribute('material', 'src', COLORS[i]);
               //document.getElementById('comic').setAttribute('animation__rotation', 'enabled: true');
               document.getElementById('comic').emit("objclick");
@@ -51,7 +56,7 @@
                 animation__scale="property: scale; dur: 1000; from: 0 0 0; to: 1 1 1; easing: easeOutCubic; enabled: false;"
                 animation__rotation="property: rotation; dur: 500; from: 0 0 0; to: 0 0 360; easing: easeOutCubic; startEvents: objclick;"
             > 
-                <a-image camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="img/acon1.png">
+                <a-image camera-listener width="3.9" height="3" position="0 0.2 0" rotation="-90 0 0" src="">
                 </a-image>
             </a-entity>
         </a-marker>
