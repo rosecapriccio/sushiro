@@ -14,18 +14,18 @@
 <body style="margin : 0px; overflow: hidden;">
     <script>
         var i = 0;
-        //var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
-        var COLORS = [
-            ["img/icon1.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"],
-            ["img/acon1.png", "img/acon2.png", "img/acon3.png", "img/acon4.png"]
-        ];
+        var COLORS = ["img/icon.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
+        // var COLORS = [
+        //     ["img/icon1.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"],
+        //     ["img/acon1.png", "img/acon2.png", "img/acon3.png", "img/acon4.png"]
+        // ];
 
         AFRAME.registerComponent('camera-listener', {
           init: function () {
-            this.setAttribute('material', 'src', COLORS[1][0]);
+            this.setAttribute('material', 'src', COLORS[0]);
             this.el.addEventListener('mouseup', function (evt) {
               i = (i + 1) % 4;
-              this.setAttribute('material', 'src', COLORS[1][i]);
+              this.setAttribute('material', 'src', COLORS[i]);
               //document.getElementById('comic').setAttribute('animation__rotation', 'enabled: true');
               document.getElementById('comic').emit("objclick");
             });
