@@ -17,7 +17,11 @@
         // var COLORS = ["img/icon1.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"];
         const COLORS = [
             ["img/icon1.png", "img/icon2.png", "img/icon3.png", "img/icon4.png"],
-            ["img/acon1.png", "img/acon2.png", "img/acon3.png", "img/acon4.png"]
+            ["img/acon1.png", "img/acon2.png", "img/acon3.png", "img/acon4.png"],
+            ["img/bcon1.png", "img/bcon2.png", "img/bcon3.png", "img/bcon4.png"],
+            ["img/ccon1.png", "img/ccon2.png", "img/ccon3.png", "img/ccon4.png"],
+            ["img/dcon1.png", "img/dcon2.png", "img/dcon3.png", "img/dcon4.png"],
+            ["img/econ1.png", "img/econ2.png", "img/econ3.png", "img/econ4.png"]
         ];
         const NUM = Math.floor( Math.random() * COLORS.length)
 
@@ -40,10 +44,6 @@
                 marker.addEventListener('markerFound', function () {
                     document.getElementById('comic').setAttribute('animation__scale', 'enabled: true');
                 });
-
-                // marker.addEventListener('markerLost', function () {
-                //     document.getElementById('comic').setAttribute('animation__scale', 'enabled: false');
-                // });
             }
         });
     </script>
