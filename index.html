@@ -22,7 +22,7 @@
 
         AFRAME.registerComponent('camera-listener', {
           init: function () {
-            //this.setAttribute('material', 'src', COLORS[i]);
+            this.setAttribute('material', 'src', COLORS[1][0]);
             this.el.addEventListener('mouseup', function (evt) {
               i = (i + 1) % 4;
               this.setAttribute('material', 'src', COLORS[1][i]);
